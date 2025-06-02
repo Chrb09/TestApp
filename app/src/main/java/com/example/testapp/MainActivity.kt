@@ -13,13 +13,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -31,13 +26,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testapp.ui.theme.TestAppTheme
 import com.google.firebase.Firebase
-import com.google.firebase.database.database
 import com.google.firebase.firestore.firestore
 
 val firestore = Firebase.firestore
@@ -210,7 +203,6 @@ fun App() {
             modifier = Modifier.fillMaxWidth(),
             Arrangement.Center
         ) {
-            Column(Modifier.fillMaxWidth(0.35f)) {
                 Button(
                     onClick = {
                         firestore.collection("users")
@@ -229,7 +221,7 @@ fun App() {
                         fontWeight = FontWeight.Bold
                     )
                 }
-            }
+
         }
         val scrollState = rememberScrollState()
 
@@ -240,42 +232,63 @@ fun App() {
             ) {
                 // Cabeçalhos das colunas
                 Column(modifier = Modifier.padding(8.dp)) {
-                    Text(text = "Nome", style = MaterialTheme.typography.labelMedium)
+                    Text(
+                        text = "Nome",
+                        fontWeight = FontWeight.Bold)
+
                     usuarios.forEach {
                         Text(text = it.nome)
                     }
                 }
 
                 Column(modifier = Modifier.padding(8.dp)) {
-                    Text(text = "Endereço", style = MaterialTheme.typography.labelMedium)
+                    Text(
+                        text = "Endereço",
+                        fontWeight = FontWeight.Bold
+                    )
+
                     usuarios.forEach {
                         Text(text = it.endereco)
                     }
                 }
 
                 Column(modifier = Modifier.padding(8.dp)) {
-                    Text(text = "Bairro", style = MaterialTheme.typography.labelMedium)
+                    Text(
+                        text = "Bairro",
+                        fontWeight = FontWeight.Bold
+                    )
                     usuarios.forEach {
                         Text(text = it.bairro)
                     }
                 }
 
                 Column(modifier = Modifier.padding(8.dp)) {
-                    Text(text = "CEP", style = MaterialTheme.typography.labelMedium)
+                    Text(
+                        text = "CEP",
+                        fontWeight = FontWeight.Bold
+                    )
+
                     usuarios.forEach {
                         Text(text = it.cep)
                     }
                 }
 
                 Column(modifier = Modifier.padding(8.dp)) {
-                    Text(text = "Cidade", style = MaterialTheme.typography.labelMedium)
+                    Text(text = "Cidade",
+                        fontWeight = FontWeight.Bold
+                    )
+
                     usuarios.forEach {
                         Text(text = it.cidade)
                     }
                 }
 
                 Column(modifier = Modifier.padding(8.dp)) {
-                    Text(text = "Estado", style = MaterialTheme.typography.labelMedium)
+                    Text(
+                        text = "Estado",
+                        fontWeight = FontWeight.Bold
+                    )
+
                     usuarios.forEach {
                         Text(text = it.estado)
                     }
